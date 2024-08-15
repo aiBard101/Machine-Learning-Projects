@@ -1,0 +1,10 @@
+flask
+uvicorn
+scikit-learn
+nltk
+pandas
+numpy
+beautifulsoup4
+requests
+python-dotenv
+tmdbv3api

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendation System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<!-- Main Heading -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="text-danger">aiBard Movie Recommendation System</h1>
+        </div>
+    </div>
+</div>
+
+<!-- Search Bar -->
+<div class="search-bar-container">
+    <div class="search-bar">
+        <form class="form-inline" id="searchForm" action="/search" method="get">
+            <input class="form-control mr-sm-2" id="searchInput" type="search" name="query" placeholder="Search movies..." aria-label="Search" required>
+            <button class="btn btn-danger my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div id="autocomplete-results" class="autocomplete-results"></div>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <div class="row recommendations-section">
+        {% for movie in top_recommended_movies %}
+        <div class="col-md-3 col-sm-6 recommendation-item">
+            <a href="/movie/{{ movie.title | replace(' ', '_') }}">
+                <img src="{{ movie.image }}" alt="{{ movie.title }}">
+                <p class="recommendation-title">{{ movie.title }}</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 aiBard.annonymousAsquare. All rights reserved.</p>
+</footer>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+</body>
+</html>

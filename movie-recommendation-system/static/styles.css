@@ -1,0 +1,157 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #343a40; /* Dark background */
+    color: #e74c3c; /* Red text */
+}
+
+.container {
+    flex: 1;
+}
+
+.search-bar-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    padding: 20px; /* Optional padding */
+    box-sizing: border-box;
+}
+
+.search-bar-container form {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 800px; /* Limit the width for larger screens */
+}
+
+.movie-container {
+    background: #212529; /* Slightly lighter dark background for the movie container */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin: 0 auto; /* Center the container */
+    width: 90%; /* Make sure it adjusts on smaller screens */
+}
+
+.movie-poster img,
+.cast-section img,
+.recommendations-section img {
+    width: 100%;
+    max-width: 240px; /* Set maximum width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure image covers the specified dimensions */
+    border-radius: 8px;
+}
+
+.movie-details h1,
+.cast-item-title,
+.recommendation-title {
+    color: #e74c3c; /* Red text */
+}
+
+.cast-item {
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative; /* Position relative for absolute children */
+}
+
+.read-more-btn {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e74c3c; /* Red background for button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    z-index: 10; /* Ensure button is above image */
+}
+
+.cast-item:hover .read-more-btn {
+    display: block;
+}
+
+.review-table th, .review-table td {
+    color: #e74c3c; /* Red text */
+}
+
+.recommendations-section img {
+    cursor: pointer;
+}
+
+footer {
+    background-color: #212529; /* Dark background for footer */
+    color: #e74c3c; /* Red text */
+    padding: 20px 0;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Autocomplete results */
+.autocomplete-results {
+    position: absolute;
+    background-color: #212529; /* Dark background */
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+    width: calc(100% - 16px);
+}   
+
+.autocomplete-result {
+    padding: 10px;
+    color: #e74c3c; /* Red text */
+    cursor: pointer;
+}
+
+.autocomplete-result:hover {
+    background-color: #495057; /* Slightly lighter dark background on hover */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .search-bar-container form {
+        flex-direction: column; /* Stack form elements vertically on smaller screens */
+    }
+
+    .movie-poster img {
+        max-width: 100%; /* Full width for smaller screens */
+        height: auto;
+    }
+
+    .movie-container {
+        width: 95%; /* Slightly wider on small screens */
+    }
+
+    .autocomplete-results {
+        width: 100%; /* Full width on small screens */
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-bar-container {
+        padding: 10px; /* Reduce padding on very small screens */
+    }
+
+    .movie-container {
+        padding: 10px; /* Reduce padding */
+    }
+
+    .read-more-btn {
+        font-size: 12px; /* Smaller button text */
+        padding: 3px 6px; /* Smaller button size */
+    }
+}
